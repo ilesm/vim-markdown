@@ -19,6 +19,10 @@ if !exists('g:markdown_enable_mappings')
   endif
 endif
 
+if !exists('g:markdown_enable_leader_mappings')
+    let g:markdown_enable_leader_mappings = 1
+endif
+
 if !exists('g:markdown_enable_insert_mode_mappings')
   " make it compatible with previous configuration value
   if exists('g:markdown_include_insert_mode_default_mappings')
@@ -182,14 +186,16 @@ if g:markdown_enable_mappings
   execute 'nnoremap <silent> <buffer> ' . g:markdown_mapping_switch_status . ' :call markdown#SwitchStatus()<CR>'
 
   " Leader mappings
-  nnoremap <buffer> <Leader>e :MarkdownEditBlock<CR>
-  vnoremap <buffer> <Leader>e :MarkdownEditBlock<CR>
-  nnoremap <silent> <buffer> <Leader>ft  :call markdown#FormatTable()<CR>
+  if g:markdown_enable_leader_mappings
+      nnoremap <buffer> <Leader>e :MarkdownEditBlock<CR>
+      vnoremap <buffer> <Leader>e :MarkdownEditBlock<CR>
+      nnoremap <silent> <buffer> <Leader>ft  :call markdown#FormatTable()<CR>
 
-  " Insert Mode mappings
-  if g:markdown_enable_insert_mode_leader_mappings
-    inoremap <buffer> <Leader>e <Esc>:MarkdownEditBlock<CR>
-    inoremap <silent> <buffer> <Leader>ft  <Esc>:call markdown#FormatTable()<CR>a
+      " Insert Mode mappings
+      if g:markdown_enable_insert_mode_leader_mappings
+        inoremap <buffer> <Leader>e <Esc>:MarkdownEditBlock<CR>
+        inoremap <silent> <buffer> <Leader>ft  <Esc>:call markdown#FormatTable()<CR>a
+      endif
   endif
 endif
 

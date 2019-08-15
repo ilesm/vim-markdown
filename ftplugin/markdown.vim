@@ -172,10 +172,10 @@ if g:markdown_enable_mappings
 
     if g:markdown_drop_empty_blockquotes
       " Remove empty quote and list items when press <CR>
-      inoremap <silent> <buffer> <script> <expr> <CR> <SID>IsAnEmptyQuote() \|\| <SID>IsAnEmptyListItem() ? '<C-O>:normal "_0D<CR>' : '<CR>'
+      inoremap <silent> <buffer> <script> <expr> <CR> <SID>IsAnEmptyQuote() \|\| <SID>IsAnEmptyListItem() ? '<C-O>:normal 0"_D<CR>' : '<CR>'
     else
       " Remove only empty list items when press <CR>
-      inoremap <silent> <buffer> <script> <expr> <CR> <SID>IsAnEmptyListItem() ? '<C-O>:normal "_0D<CR>' : '<CR>'
+      inoremap <silent> <buffer> <script> <expr> <CR> <SID>IsAnEmptyListItem() ? '<C-O>:normal 0"_D<CR>' : '<CR>'
     endif
 
     " Format tables
